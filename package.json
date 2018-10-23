@@ -1,0 +1,54 @@
+{
+  "name": "@eog/eog-react",
+  "description": "Utility tool for EOG React applications",
+  "version": "0.0.2",
+  "author": "smiles2",
+  "bin": {
+    "eog-react": "./bin/run"
+  },
+  "bugs": "https://github.com/eog/eog-react/issues",
+  "dependencies": {
+    "@eog/eog-react": "^0.0.1",
+    "@oclif/command": "^1",
+    "@oclif/config": "^1",
+    "@oclif/plugin-help": "^2",
+    "cli-ux": "^4.9.1",
+    "es6-promisify": "^6.0.1",
+    "git-clone": "^0.1.0",
+    "global": "^4.3.2",
+    "replace-in-file": "^3.4.2"
+  },
+  "devDependencies": {
+    "@oclif/dev-cli": "^1",
+    "globby": "^8"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "files": [
+    "/bin",
+    "/npm-shrinkwrap.json",
+    "/oclif.manifest.json",
+    "/src"
+  ],
+  "homepage": "https://github.com/eog/eog-react",
+  "keywords": [
+    "oclif"
+  ],
+  "license": "EOG",
+  "main": "src/index.js",
+  "oclif": {
+    "commands": "./src/commands",
+    "bin": "eog-react",
+    "plugins": [
+      "@oclif/plugin-help"
+    ]
+  },
+  "repository": "eog/eog-react",
+  "scripts": {
+    "postpack": "rm -f oclif.manifest.json",
+    "prepack": "oclif-dev manifest && oclif-dev readme",
+    "test": "echo NO TESTS",
+    "version": "oclif-dev readme && git add README.md"
+  }
+}
