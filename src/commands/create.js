@@ -1,6 +1,10 @@
 const { Command, flags } = require('@oclif/command');
 const { cli } = require('cli-ux');
+
 const gitClone = require('git-clone');
+const ora = require('ora');
+const chalk = require('chalk');
+
 const replaceInFile = require('replace-in-file');
 const promisify = require("es6-promisify").promisify;
 
@@ -12,14 +16,14 @@ const REPO_URL = 'https://github.com/smiles21/starter-kit';
 class CreateCommand extends Command {
   async run() {
     const { flags } = this.parse(CreateCommand);
-
-    // Use the given application name or prompt the user for one. 
     const appName = flags.name || await cli.prompt('App name');
 
-    // Clone the github repo
+    const spinner = ora('Clone starter repo').start();
+
     await promisedClone(REPO_URL, appName);
 
-    // Go through the starter kit code and change $APP_NAME to the appName
+    spinner.succeed().start('Apply naming to repo');
+
     try {
       const replacementOptions = {
         files: `${appName}/**/*`,
@@ -30,9 +34,12 @@ class CreateCommand extends Command {
       await replaceInFile(replacementOptions);
     } catch (e) {
       this.error(e);
+      throw new Error(e);
     }
+    
+    spinner.succeed();
 
-    this.log(`application created and named ${appName}`);
+    this.log(`\n${chalk.green('SUCCESS')}: Application created and in directory "${appName}"`);
   }
 }
 
