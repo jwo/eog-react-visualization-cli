@@ -14,11 +14,12 @@ class CreateCommand extends Command {
     const { flags } = this.parse(CreateCommand);
     const appName = flags.name || await cli.prompt('App name');
 
+    // Clone the git repo to local
     const spinner = ora('Clone starter repo').start();
     await simpleGit().clone(REPO_URL, appName, ['--depth', '1']);
 
+    // Rename all examples of $APP_NAME in the cloned repository
     spinner.succeed().start('Apply naming to repo');
-
     try {
       const replacementOptions = {
         files: `${appName}/**/*`,
@@ -32,11 +33,12 @@ class CreateCommand extends Command {
       throw new Error(e);
     }
     
+    // Remove the remote link to the original repository
     spinner.succeed().start('Remove remote link');
     simpleGit(appName).removeRemote('origin');
     
     spinner.succeed();
-    this.log(`\n${chalk.green('SUCCESS')}: Application created and in directory "${appName}"`);
+    this.log(`\n${chalk.green('SUCCESS')}: Application created and in directory "${appName}"\n`);
   }
 }
 
