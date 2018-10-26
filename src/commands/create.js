@@ -1,14 +1,10 @@
 const { Command, flags } = require('@oclif/command');
 const { cli } = require('cli-ux');
 
-const gitClone = require('git-clone');
+const simpleGit = require('simple-git/promise');
 const ora = require('ora');
 const chalk = require('chalk');
-
 const replaceInFile = require('replace-in-file');
-const promisify = require("es6-promisify").promisify;
-
-const promisedClone = promisify(gitClone);
 
 // URL for the EOG starter kit
 const REPO_URL = 'https://github.com/smiles21/starter-kit';
@@ -19,8 +15,7 @@ class CreateCommand extends Command {
     const appName = flags.name || await cli.prompt('App name');
 
     const spinner = ora('Clone starter repo').start();
-
-    await promisedClone(REPO_URL, appName);
+    await simpleGit().clone(REPO_URL, appName, ['--depth', '1']);
 
     spinner.succeed().start('Apply naming to repo');
 
@@ -37,8 +32,10 @@ class CreateCommand extends Command {
       throw new Error(e);
     }
     
+    spinner.succeed().start('Remove remote link');
+    simpleGit(appName).removeRemote('origin');
+    
     spinner.succeed();
-
     this.log(`\n${chalk.green('SUCCESS')}: Application created and in directory "${appName}"`);
   }
 }
