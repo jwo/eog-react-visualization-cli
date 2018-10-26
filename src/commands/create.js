@@ -16,7 +16,7 @@ class CreateCommand extends Command {
 
     // Clone the git repo to local
     const spinner = ora('Clone starter repo').start();
-    await simpleGit().clone(REPO_URL, appName, ['--depth', '1']);
+    await simpleGit().clone(REPO_URL, appName);
 
     // Rename all examples of $APP_NAME in the cloned repository
     spinner.succeed().start('Apply naming to repo');
