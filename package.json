@@ -1,7 +1,7 @@
 {
   "name": "@eog/eog-react",
   "description": "Utility tool for EOG React applications",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "author": "smiles2",
   "bin": {
     "eog-react": "./bin/run"
