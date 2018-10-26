@@ -2,6 +2,7 @@ const { Command, flags } = require('@oclif/command');
 const { cli } = require('cli-ux');
 
 const simpleGit = require('simple-git/promise');
+const rimraf = require('rimraf');
 const ora = require('ora');
 const chalk = require('chalk');
 const replaceInFile = require('replace-in-file');
@@ -35,7 +36,10 @@ class CreateCommand extends Command {
     
     // Remove the remote link to the original repository
     spinner.succeed().start('Remove remote link');
-    simpleGit(appName).removeRemote('origin');
+    rimraf.sync(`${appName}/.git`);
+    await simpleGit(appName).init();
+    await simpleGit(appName).raw(['add', '--all', '.']);
+    await simpleGit(appName).commit('eog-react initial commit');
     
     spinner.succeed();
     this.log(`\n${chalk.green('SUCCESS')}: Application created and in directory "${appName}"\n`);
