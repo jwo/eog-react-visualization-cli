@@ -49,8 +49,15 @@ class CreateCommand extends Command {
     this.log(
       `\n${chalk.green(
         "SUCCESS"
-      )}: React App created and in directory "${directory}"\n`
+      )}: React App created and in directory "${directory}"`
     );
+    this.log(
+      `\n${chalk.green(
+        "SUCCESS"
+      )}: You'll want to yarn install and then yarn start the react app.`
+    );
+
+    this.log(`\n${chalk.green("SUCCESS")}: Good luck!`);
   }
 }
 
