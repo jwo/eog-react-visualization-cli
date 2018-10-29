@@ -2,18 +2,6 @@
 # yarn lockfile v1
 
 
-"@eog/eog-react@^0.0.1":
-  version "0.0.1"
-  resolved "http://houvlxnpm:8080/@/@eog/eog-react/_attachments/eog-react-0.0.1.tgz#a842bd271b16debb6617725a378509e31edd6260"
-  integrity sha512-PyvF/vT2DtFgxOoKkmfpkL2wAiubJhNr+/71ceKPMkoD3CMpS684BxIBdxeJ/X3yTBjPhkrhJyjSLfh3LGSHkw==
-  dependencies:
-    "@oclif/command" "^1"
-    "@oclif/config" "^1"
-    "@oclif/plugin-help" "^2"
-    cli-ux "^4.9.1"
-    git-clone "^0.1.0"
-    replace-in-file "^3.4.2"
-
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/@mrmlnc/readdir-enhanced/-/readdir-enhanced-2.2.1.tgz#524af240d1a360527b730475ecfa1344aa540dde"
@@ -763,11 +751,6 @@ get-value@^2.0.3, get-value@^2.0.6:
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/get-value/-/get-value-2.0.6.tgz#dc15ca1c672387ca76bd37ac0a395ba2042a2c28"
   integrity sha1-3BXKHGcjh8p2vTesCjlbogQqLCg=
-
-git-clone@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/git-clone/-/git-clone-0.1.0.tgz#0d76163778093aef7f1c30238f2a9ef3f07a2eb9"
-  integrity sha1-DXYWN3gJOu9/HDAjjyqe8/B6Lrk=
 
 glob-parent@^3.1.0:
   version "3.1.0"
