@@ -21,7 +21,7 @@ $ npm install -g eog-react-visualization-cli
 $ eog-react-visualization-cli COMMAND
 running command...
 $ eog-react-visualization-cli (-v|--version|version)
-eog-react-visualization-cli/1.0.2 darwin-x64 node-v10.12.0
+eog-react-visualization-cli/1.0.3 darwin-x64 node-v10.12.0
 $ eog-react-visualization-cli --help [COMMAND]
 USAGE
   $ eog-react-visualization-cli COMMAND
@@ -52,7 +52,7 @@ DESCRIPTION
   local repository to start you off.
 ```
 
-_See code: [src/commands/create.js](https://github.com/jwolgamott/eog-react-visualization-cli/blob/v1.0.2/src/commands/create.js)_
+_See code: [src/commands/create.js](https://github.com/jwolgamott/eog-react-visualization-cli/blob/v1.0.3/src/commands/create.js)_
 
 ## `eog-react-visualization-cli help [COMMAND]`
 
