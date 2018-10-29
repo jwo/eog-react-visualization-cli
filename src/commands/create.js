@@ -15,7 +15,9 @@ class CreateCommand extends Command {
   async run() {
     const { flags } = this.parse(CreateCommand);
     const userName = flags.name || (await cli.prompt("What's Your Name?"));
-    const directory = parameterize(userName);
+    const directory = [parameterize(userName), "eog-react-assessment"].join(
+      "-"
+    );
 
     // Clone the git repo to local
     const spinner = ora("Clone starter repo").start();
@@ -38,16 +40,16 @@ class CreateCommand extends Command {
 
     // Remove the remote link to the original repository
     spinner.succeed().start("Remove remote link");
-    rimraf.sync(`${appName}/.git`);
-    await simpleGit(appName).init();
-    await simpleGit(appName).raw(["add", "--all", "."]);
-    await simpleGit(appName).commit("eog-react initial commit");
+    rimraf.sync(`${directory}/.git`);
+    await simpleGit(directory).init();
+    await simpleGit(directory).raw(["add", "--all", "."]);
+    await simpleGit(directory).commit("eog-react initial commit");
 
     spinner.succeed();
     this.log(
       `\n${chalk.green(
         "SUCCESS"
-      )}: Application created and in directory "${directory}"\n`
+      )}: React App created and in directory "${directory}"\n`
     );
   }
 }

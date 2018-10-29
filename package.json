@@ -44,7 +44,7 @@
   "main": "src/index.js",
   "oclif": {
     "commands": "./src/commands",
-    "bin": "eog-react",
+    "bin": "eog-react-visualization-cli",
     "plugins": [
       "@oclif/plugin-help"
     ]
