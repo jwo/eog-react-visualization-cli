@@ -1544,6 +1544,11 @@ p-try@^2.0.0:
   resolved "https://registry.yarnpkg.com/p-try/-/p-try-2.0.0.tgz#85080bb87c64688fa47996fe8f7dfbe8211760b1"
   integrity sha512-hMp0onDKIajHfIkdRk3P4CdCmErkYAxxDtP3Wx/4nZ3aGlau2VKh3mZpcuFkH27WQkL/3WBCPOktzA9ZOAnMQQ==
 
+parameterize@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/parameterize/-/parameterize-0.1.0.tgz#2d2b2e3b1a553006d045a3049054a50b9931f79d"
+  integrity sha1-LSsuOxpVMAbQRaMEkFSlC5kx950=
+
 parse-json@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/parse-json/-/parse-json-4.0.0.tgz#be35f5425be1f7f6c747184f98a788cb99477ee0"

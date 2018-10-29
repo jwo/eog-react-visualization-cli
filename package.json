@@ -1,10 +1,10 @@
 {
-  "name": "@eog/eog-react",
-  "description": "Utility tool for EOG React applications",
+  "name": "eog-react-visualization-cli",
+  "description": "CLI for EOG React assessments",
   "version": "0.0.5",
-  "author": "smiles2",
+  "author": "jwo",
   "bin": {
-    "eog-react": "./bin/run"
+    "eog-react-visualization-cli": "./bin/run"
   },
   "bugs": "https://github.com/eog/eog-react/issues",
   "dependencies": {
@@ -18,6 +18,7 @@
     "global": "^4.3.2",
     "listr": "^0.14.2",
     "ora": "^3.0.0",
+    "parameterize": "^0.1.0",
     "replace-in-file": "^3.4.2",
     "rimraf": "^2.6.2",
     "simple-git": "^1.105.0"
@@ -35,11 +36,11 @@
     "/oclif.manifest.json",
     "/src"
   ],
-  "homepage": "https://github.com/eog/eog-react",
+  "homepage": "https://github.com/jwolgamott/eog-react-visualization-cli",
   "keywords": [
     "oclif"
   ],
-  "license": "EOG",
+  "license": "MIT",
   "main": "src/index.js",
   "oclif": {
     "commands": "./src/commands",
@@ -48,7 +49,7 @@
       "@oclif/plugin-help"
     ]
   },
-  "repository": "eog/eog-react",
+  "repository": "jwolgamott/eog-react-visualization-cli",
   "scripts": {
     "postpack": "rm -f oclif.manifest.json",
     "prepack": "oclif-dev manifest && oclif-dev readme",

@@ -1,31 +1,33 @@
-const { Command, flags } = require('@oclif/command');
-const { cli } = require('cli-ux');
+const { Command, flags } = require("@oclif/command");
+const { cli } = require("cli-ux");
 
-const simpleGit = require('simple-git/promise');
-const rimraf = require('rimraf');
-const ora = require('ora');
-const chalk = require('chalk');
-const replaceInFile = require('replace-in-file');
+const simpleGit = require("simple-git/promise");
+const rimraf = require("rimraf");
+const ora = require("ora");
+const chalk = require("chalk");
+const replaceInFile = require("replace-in-file");
+const parameterize = require("parameterize");
 
 // URL for the EOG starter kit
-const REPO_URL = 'https://github.com/smiles21/starter-kit';
+const REPO_URL = "https://github.com/jwo/eog-react-visualization-base";
 
 class CreateCommand extends Command {
   async run() {
     const { flags } = this.parse(CreateCommand);
-    const appName = flags.name || await cli.prompt('App name');
+    const userName = flags.name || (await cli.prompt("What's Your Name?"));
+    const directory = parameterize(userName);
 
     // Clone the git repo to local
-    const spinner = ora('Clone starter repo').start();
-    await simpleGit().clone(REPO_URL, appName);
+    const spinner = ora("Clone starter repo").start();
+    await simpleGit().clone(REPO_URL, directory);
 
     // Rename all examples of $APP_NAME in the cloned repository
-    spinner.succeed().start('Apply naming to repo');
+    spinner.succeed().start("Apply naming to assessment");
     try {
       const replacementOptions = {
-        files: `${appName}/**/*`,
-        from: /\$APP_NAME/g,
-        to: appName,
+        files: `${directory}/**/*`,
+        from: /\$USERNAME/g,
+        to: userName
       };
 
       await replaceInFile(replacementOptions);
@@ -33,29 +35,32 @@ class CreateCommand extends Command {
       this.error(e);
       throw new Error(e);
     }
-    
+
     // Remove the remote link to the original repository
-    spinner.succeed().start('Remove remote link');
+    spinner.succeed().start("Remove remote link");
     rimraf.sync(`${appName}/.git`);
     await simpleGit(appName).init();
-    await simpleGit(appName).raw(['add', '--all', '.']);
-    await simpleGit(appName).commit('eog-react initial commit');
-    
+    await simpleGit(appName).raw(["add", "--all", "."]);
+    await simpleGit(appName).commit("eog-react initial commit");
+
     spinner.succeed();
-    this.log(`\n${chalk.green('SUCCESS')}: Application created and in directory "${appName}"\n`);
+    this.log(
+      `\n${chalk.green(
+        "SUCCESS"
+      )}: Application created and in directory "${directory}"\n`
+    );
   }
 }
 
 // Add in extra documentation for the help screen
-CreateCommand.description = `Clone the EOG starter kit and rename it to given app name 
+CreateCommand.description = `EOG React Starter Assessment
 ...
-This is a way to initially create your application.  It will set up boilerplate
-code for your project using the EOG react starter kit, found at
-https://git.eogresources.com/eog/eog-react-starter-kit.
+This is a way to initially create your assessment. It wil ask you your name and create you a
+local repository to start you off.
 `;
 
 CreateCommand.flags = {
-  name: flags.string({char: 'n', description: 'Application name'}),
+  name: flags.string({ char: "n", description: "Your Name" })
 };
 
 module.exports = CreateCommand;
