@@ -7,6 +7,8 @@ const ora = require("ora");
 const chalk = require("chalk");
 const replaceInFile = require("replace-in-file");
 const parameterize = require("parameterize");
+const util = require("util");
+const exec = util.promisify(require("child_process").exec);
 
 // URL for the EOG starter kit
 const REPO_URL = "https://github.com/jwo/eog-react-visualization-base";
@@ -44,6 +46,10 @@ class CreateCommand extends Command {
     await simpleGit(directory).init();
     await simpleGit(directory).raw(["add", "--all", "."]);
     await simpleGit(directory).commit("eog-react initial commit");
+
+    spinner.start("yarn installing");
+    process.chdir(directory);
+    await exec(`yarn install`);
 
     spinner.succeed();
     this.log(
