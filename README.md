@@ -21,7 +21,7 @@ $ npm install -g eog-react-visualization-cli
 $ eog-react-visualization-cli COMMAND
 running command...
 $ eog-react-visualization-cli (-v|--version|version)
-eog-react-visualization-cli/1.0.3 darwin-x64 node-v10.12.0
+eog-react-visualization-cli/1.1.0 darwin-x64 node-v10.12.0
 $ eog-react-visualization-cli --help [COMMAND]
 USAGE
   $ eog-react-visualization-cli COMMAND
@@ -34,6 +34,7 @@ USAGE
 <!-- commands -->
 * [`eog-react-visualization-cli create`](#eog-react-visualization-cli-create)
 * [`eog-react-visualization-cli help [COMMAND]`](#eog-react-visualization-cli-help-command)
+* [`eog-react-visualization-cli preview`](#eog-react-visualization-cli-preview)
 
 ## `eog-react-visualization-cli create`
 
@@ -52,7 +53,7 @@ DESCRIPTION
   local repository to start you off.
 ```
 
-_See code: [src/commands/create.js](https://github.com/jwolgamott/eog-react-visualization-cli/blob/v1.0.3/src/commands/create.js)_
+_See code: [src/commands/create.js](https://github.com/jwolgamott/eog-react-visualization-cli/blob/v1.1.0/src/commands/create.js)_
 
 ## `eog-react-visualization-cli help [COMMAND]`
 
@@ -70,4 +71,22 @@ OPTIONS
 ```
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v2.1.3/src/commands/help.ts)_
+
+## `eog-react-visualization-cli preview`
+
+Preview
+
+```
+USAGE
+  $ eog-react-visualization-cli preview
+
+OPTIONS
+  -r, --repo=repo  GitHub Repo URL
+
+DESCRIPTION
+  ...
+  A way to preview your assessment. Will clone, install and run.
+```
+
+_See code: [src/commands/preview.js](https://github.com/jwolgamott/eog-react-visualization-cli/blob/v1.1.0/src/commands/preview.js)_
 <!-- commandsstop -->
