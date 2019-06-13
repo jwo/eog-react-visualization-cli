@@ -30,7 +30,11 @@ class CreateCommand extends Command {
     spinner.succeed().start("Apply naming to assessment");
     try {
       const replacementOptions = {
-        files: [`${directory}/**/*`, `${directory}/.eog.json`],
+        files: [
+          `${directory}/**/*`,
+          `${directory}/.eog.json`,
+          `${directory}/README.md`
+        ],
         from: /\$USERNAME/g,
         to: userName
       };
