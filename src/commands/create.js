@@ -9,6 +9,7 @@ const replaceInFile = require("replace-in-file");
 const parameterize = require("parameterize");
 const util = require("util");
 const exec = util.promisify(require("child_process").exec);
+const generateTokenBuffer = util.promisify(require("crypto").randomBytes);
 
 // URL for the EOG starter kit
 const REPO_URL = "https://github.com/jwo/eog-react-visualization-base";
@@ -29,11 +30,38 @@ class CreateCommand extends Command {
     spinner.succeed().start("Apply naming to assessment");
     try {
       const replacementOptions = {
-        files: `${directory}/**/*`,
+        files: [`${directory}/**/*`, `${directory}/.eog.json`],
         from: /\$USERNAME/g,
         to: userName
       };
 
+      await replaceInFile(replacementOptions);
+    } catch (e) {
+      this.error(e);
+      throw new Error(e);
+    }
+
+    try {
+      const replacementOptions = {
+        files: `${directory}/.eog.json`,
+        from: /\$DATECREATED/g,
+        to: new Date().getTime().toString()
+      };
+      await replaceInFile(replacementOptions);
+    } catch (e) {
+      this.error(e);
+      throw new Error(e);
+    }
+
+    try {
+      const tokenBuffer = await generateTokenBuffer(24);
+      const token = tokenBuffer.toString("hex");
+
+      const replacementOptions = {
+        files: `${directory}/.eog.json`,
+        from: /\$TOKEN/g,
+        to: token
+      };
       await replaceInFile(replacementOptions);
     } catch (e) {
       this.error(e);
