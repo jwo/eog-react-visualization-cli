@@ -18,7 +18,7 @@
     "global": "^4.3.2",
     "listr": "^0.14.2",
     "ora": "^3.0.0",
-    "parameterize": "^0.1.0",
+    "parameterize": "^1.0.0",
     "replace-in-file": "^3.4.2",
     "rimraf": "^2.6.2",
     "simple-git": "^1.105.0",
