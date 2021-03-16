@@ -21,7 +21,7 @@
     "parameterize": "^0.1.0",
     "replace-in-file": "^3.4.2",
     "rimraf": "^2.6.2",
-    "simple-git": "^1.105.0",
+    "simple-git": "^2.37.0",
     "tmp": "^0.0.33",
     "util": "^0.11.1"
   },
